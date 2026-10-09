@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntroReview | Student Video Reviewer</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-icon">IR</span>
+      <span>IntroReview<small>STUDENT VIDEO REVIEWER</small></span>
+    </a>
+    <div class="local-status">
+      <span class="status-dot"></span>
+      Local processing enabled
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">VIDEO ANALYSIS WORKSPACE</p>
+        <h1>Review every introduction.</h1>
+        <p class="subtitle">
+          Watch, transcribe, and correct student introductions in one workspace.
+        </p>
+      </div>
+      <div class="step-indicator">
+        <span class="step-active">01</span>
+        <span>Upload</span>
+        <span class="step-line"></span>
+        <span>02</span>
+        <span>Transcribe</span>
+        <span class="step-line"></span>
+        <span>03</span>
+        <span>Review</span>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel video-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">01 / VIDEO SOURCE</p>
+            <h2>Student introduction</h2>
+          </div>
+          <span class="tag">LOCAL FILE</span>
+        </div>
+
+        <label class="drop-zone" id="dropZone" for="videoInput">
+          <span class="upload-icon">↑</span>
+          <strong>Choose a video to get started</strong>
+          <span>Click to browse or drag and drop a video here</span>
+          <small>MP4, WebM, MOV, AVI or MKV · Maximum 200 MB</small>
+        </label>
+
+        <input id="videoInput" type="file"
+          accept="video/mp4,video/webm,video/quicktime,video/x-msvideo,video/x-matroska"
+          hidden>
+
+        <div id="videoArea" class="video-area hidden">
+          <video id="videoPlayer" controls playsinline></video>
+          <div class="file-details">
+            <div>
+              <strong id="fileName">No video selected</strong>
+              <span id="fileSize"></span>
+            </div>
+            <button id="changeVideo" class="text-button" type="button">
+              Change video
+            </button>
+          </div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-icon">✳</div>
+          <div>
+            <strong>Whisper transcription</strong>
+            <p>Speech recognition runs locally on this computer.</p>
+          </div>
+          <span class="tag">FREE</span>
+        </div>
+
+        <button id="transcribeBtn" class="primary-button" disabled>
+          <span>✦</span> Transcribe video
+        </button>
+
+        <p id="statusMessage" class="status-message" role="status">
+          Select a video to begin.
+        </p>
+      </div>
+
+      <div class="panel transcript-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">02 / TRANSCRIPT</p>
+            <h2>Speech transcript</h2>
+          </div>
+          <span id="segmentCount" class="count-badge">0 segments</span>
+        </div>
+
+        <div class="transcript-toolbar">
+          <span>TIME</span>
+          <span>EDITABLE TRANSCRIPT</span>
+        </div>
+
+        <div id="transcriptEmpty" class="empty-state">
+          <div class="empty-icon">Aa</div>
+          <h3>Your transcript will appear here</h3>
+          <p>Choose a video and select “Transcribe video”. Each speech segment will have a timestamp and editable text.</p>
+        </div>
+
+        <div id="transcriptList" class="transcript-list hidden"></div>
+
+        <div class="transcript-footer">
+          <span id="editHint">Corrections are editable after transcription.</span>
+          <div class="export-actions">
+            <button id="exportTxt" class="secondary-button" disabled>
+              Export TXT
+            </button>
+            <button id="exportSrt" class="secondary-button" disabled>
+              Export SRT
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>INTROREVIEW</span>
+      <span>Local-first · No paid transcription API</span>
+    </footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
